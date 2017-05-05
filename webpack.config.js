@@ -14,11 +14,23 @@ const config = {
         test: /\.js$/
       },
       {
-        // use: ['style-loader', 'css-loader'],
         use: ExtractTextPlugin.extract({
           use: 'css-loader'
         }),
         test: /\.css$/
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 40000 }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {}
+          }
+        ]
       }
     ]
   },
